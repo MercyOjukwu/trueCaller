@@ -44,4 +44,19 @@ public class ContactRepositoryImpl implements ContactRepository{
     public Contact findById(int id) {
         return contacts.get(id - 1);
     }
+
+    @Override
+    public Contact updateContact(Contact contact, String firstName) {
+        contacts.remove(contact);
+        contacts.add(contact);
+        contact.setFirstName(firstName);
+        return contact;
+    }
+
+    @Override
+    public void deleteContact(Contact contact) {
+        contacts.remove(contact);
+    }
+
+
 }

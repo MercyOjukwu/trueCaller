@@ -8,14 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ContractServiceImplTest {
+class ContactServiceImplTest {
 
     private ContactService contactService;
     private ContactRepository contactRepository;
 
     @BeforeEach public void setUp(){
         contactRepository = new ContactRepositoryImpl();
-        contactService = new ContractServiceImpl(contactRepository);
+        contactService = new ContactServiceImpl(contactRepository);
     }
 
     @Test public void saveContact_findContactReturnsContact(){

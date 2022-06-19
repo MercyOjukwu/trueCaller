@@ -8,4 +8,6 @@ public interface ContactRepository {
     Contact findByFirstName(String firstName);
     Contact findByLastName(String lastName);
     Contact findById(int id);
+    Contact updateContact(Contact contact, String firstName);
+    void deleteContact(Contact contact);
 }
