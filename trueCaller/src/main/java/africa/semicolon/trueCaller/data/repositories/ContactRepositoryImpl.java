@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ContactRepositoryImpl implements ContactRepository{
 
-    List<Contact> contacts = new ArrayList<>();
+    List<Contact> contacts = new ArrayList<Contact>();
     @Override
     public Contact save(Contact contact) {
         contact.setId(contacts.size() + 1);
