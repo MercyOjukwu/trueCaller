@@ -11,4 +11,6 @@ public interface ContactService {
     Contact findById(int id);
     Contact updateContact(Contact contact, String firstName);
     void deleteContact(Contact contact);
+
+    void addContact(String firstName, String lastName, String phoneNumber);
 }

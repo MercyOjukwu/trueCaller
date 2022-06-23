@@ -1,5 +1,6 @@
 package africa.semicolon.trueCaller.services;
 
+import africa.semicolon.trueCaller.controllers.ContactController;
 import africa.semicolon.trueCaller.data.models.Contact;
 import africa.semicolon.trueCaller.data.repositories.ContactRepository;
 import africa.semicolon.trueCaller.data.repositories.ContactRepositoryImpl;
@@ -8,12 +9,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ContactServiceImpl implements ContactService{
-    private ContactRepository contactRepository;
+    private ContactRepository contactRepository = new ContactRepositoryImpl();
 
-    public ContactServiceImpl(ContactRepository contactRepository){
-        this.contactRepository = contactRepository;
-    }
+//        @Override
+//        public void addContact(String firstName, String lastName, String phoneNumber) {
+//
+//        }
+//
+
+//    public ContactServiceImpl(ContactRepository contactRepository){
+//        this.contactRepository = contactRepository;
+//    }
     List<Contact> contacts = new ArrayList<Contact>();
+
+    public ContactServiceImpl() {
+
+    }
 
 
     @Override
@@ -64,5 +75,12 @@ public class ContactServiceImpl implements ContactService{
     @Override
     public void deleteContact(Contact contact) {
         contacts.remove(contact);
+    }
+
+    @Override
+    public void addContact(String firstName, String lastName, String phoneNumber) {
+        Contact contact = new Contact(firstName, lastName,phoneNumber);
+        contact.setId(contacts.size() + 1);
+        contacts.add(contact);
     }
 }

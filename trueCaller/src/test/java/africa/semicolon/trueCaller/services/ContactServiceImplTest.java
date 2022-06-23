@@ -11,16 +11,34 @@ import static org.junit.jupiter.api.Assertions.*;
 class ContactServiceImplTest {
 
     private ContactService contactService;
-    private ContactRepository contactRepository;
 
     @BeforeEach void beginEachWith(){
-        contactService = new ContactServiceImpl(contactRepository);
+        contactService = new ContactServiceImpl();
     }
 
+    @Test public void addContact_findById(){
+        contactService.addContact("Mercy", "Ojukwu","12345");
+        contactService.addContact("Mary", "Ojukwu","12345");
+
+        Contact foundContact1 = contactService.findById(1);
+        Contact foundContact2 = contactService.findById(2);
+
+        assertEquals(2, foundContact2.getId());
+    }
+
+    @Test public void addContact_findByFirstName(){
+        contactService.addContact("Mercy", "Ojukwu","12345");
+        contactService.addContact("Mary", "Ojukwu","12345");
+
+        Contact foundContact1 = contactService.findByFirstName("Mercy");
+
+        assertEquals("Mercy", foundContact1.getFirstName());
+    }
 
     @Test public void saveContact_findContactReturnsContact(){
         Contact contact  = new Contact();
         contact.setFirstName("Mary");
+
 
         contactService.save(contact);
         Contact foundContact = contactService.findById(1);
