@@ -1,13 +1,13 @@
 package africa.semicolon.trueCaller.data.repositories;
 
 import africa.semicolon.trueCaller.data.models.Contact;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ContactRepository {
-    Contact save(Contact contact);
-    int count();
-    Contact findByFirstName(String firstName);
-    Contact findByLastName(String lastName);
-    Contact findById(int id);
-    Contact updateContact(Contact contact, String firstName);
-    void deleteContact(Contact contact);
+import java.util.List;
+import java.util.Optional;
+
+public interface ContactRepository extends MongoRepository<Contact, String> {
+    List<Contact> findContactByFirstName(String firstName);
+    List<Contact> findContactByLastName(String lastName);
+    Contact findByPhoneNumber(String phoneNumber);
 }

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @RequiredArgsConstructor
-@Document
+@Document("Contacts")
 public class Contact {
 
     @Id
@@ -19,5 +19,6 @@ public class Contact {
     private String lastName;
     @NonNull
     private String phoneNumber;
+
 
 }
